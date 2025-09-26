@@ -8,8 +8,8 @@ const offices = [
     id: "nepal",
     name: "Nepal Office",
     address: "Kathmandu, Nepal",
-    contact: "+977-1-4123456",
-    email: "nepal@franklineducation.com",
+    contact: "+977 9805869216",
+    email: "nepal@theofficials.com",
     hours: "9:00 AM - 6:00 PM NPT",
     position: { top: "45%", left: "75%" },
   },
@@ -18,7 +18,7 @@ const offices = [
     name: "London Office",
     address: "London, United Kingdom",
     contact: "+44-20-7123-4567",
-    email: "london@franklineducation.com",
+    email: "london@theofficials.com",
     hours: "9:00 AM - 5:00 PM GMT",
     position: { top: "35%", left: "48%" },
   },
@@ -27,7 +27,7 @@ const offices = [
     name: "Dubai Office",
     address: "Dubai, United Arab Emirates",
     contact: "+971-4-123-4567",
-    email: "dubai@franklineducation.com",
+    email: "dubai@theofficials.com",
     hours: "9:00 AM - 6:00 PM GST",
     position: { top: "50%", left: "65%" },
   },
@@ -67,7 +67,6 @@ export function GlobalMap() {
               ></div>
             </div>
 
-            {/* Office Markers with enhanced animations */}
             {offices.map((office) => (
               <div
                 key={office.id}
@@ -77,14 +76,21 @@ export function GlobalMap() {
                 onMouseLeave={() => setSelectedOffice(null)}
               >
                 <div className="relative">
-                  {/* Pulsing ring animation */}
+                  {/* Enhanced pulsing ring animation */}
                   <div className="absolute inset-0 animate-ping">
-                    <div className="w-8 h-8 bg-accent/30 rounded-full"></div>
+                    <div className="w-12 h-12 bg-accent/30 rounded-full"></div>
+                  </div>
+                  <div className="absolute inset-0 animate-pulse" style={{ animationDelay: "0.5s" }}>
+                    <div className="w-10 h-10 bg-accent/20 rounded-full"></div>
                   </div>
 
-                  {/* Main marker */}
-                  <div className="relative z-10 w-8 h-8 bg-gradient-to-br from-accent to-accent/80 rounded-full flex items-center justify-center shadow-lg group-hover:scale-125 transition-transform duration-300">
-                    <MapPin className="h-4 w-4 text-white" />
+                  {/* THE OFFICIALS Logo Marker */}
+                  <div className="relative z-10 w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg group-hover:scale-125 transition-transform duration-300 border-2 border-white">
+                    <div className="text-white font-bold text-xs text-center leading-tight">
+                      THE
+                      <br />
+                      OFF
+                    </div>
                   </div>
 
                   {/* Enhanced Popup */}

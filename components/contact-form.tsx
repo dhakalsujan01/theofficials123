@@ -43,8 +43,8 @@ export function ContactForm() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">Email Us</h3>
-                  <p className="text-muted-foreground">info@franklineducation.com</p>
-                  <p className="text-muted-foreground">partnerships@franklineducation.com</p>
+                  <p className="text-muted-foreground">info@theofficials.com</p>
+                  <p className="text-muted-foreground">partnerships@theofficials.com</p>
                 </div>
               </div>
 
@@ -55,7 +55,7 @@ export function ContactForm() {
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">Call Us</h3>
                   <p className="text-muted-foreground">UK: +44-20-7123-4567</p>
-                  <p className="text-muted-foreground">Nepal: +977-1-4123456</p>
+                  <p className="text-muted-foreground">Nepal: +977 9805869216</p>
                   <p className="text-muted-foreground">Dubai: +971-4-123-4567</p>
                 </div>
               </div>

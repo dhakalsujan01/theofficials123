@@ -7,11 +7,18 @@ import { useEffect, useRef } from "react"
 interface ScrollAnimationProps {
   children: React.ReactNode
   className?: string
-  animation?: "fade-up" | "slide-left" | "slide-right" | "scale"
+  animation?: "fade-up" | "slide-left" | "slide-right" | "scale" | "staggered"
   delay?: number
+  staggerDelay?: number
 }
 
-export function ScrollAnimation({ children, className = "", animation = "fade-up", delay = 0 }: ScrollAnimationProps) {
+export function ScrollAnimation({
+  children,
+  className = "",
+  animation = "fade-up",
+  delay = 0,
+  staggerDelay = 100,
+}: ScrollAnimationProps) {
   const elementRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -19,7 +26,16 @@ export function ScrollAnimation({ children, className = "", animation = "fade-up
       ([entry]) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
-            entry.target.classList.add("in-view")
+            if (animation === "staggered") {
+              const children = entry.target.children
+              Array.from(children).forEach((child, index) => {
+                setTimeout(() => {
+                  child.classList.add("in-view")
+                }, index * staggerDelay)
+              })
+            } else {
+              entry.target.classList.add("in-view")
+            }
           }, delay)
         }
       },
@@ -34,13 +50,14 @@ export function ScrollAnimation({ children, className = "", animation = "fade-up
     }
 
     return () => observer.disconnect()
-  }, [delay])
+  }, [delay, animation, staggerDelay])
 
   const animationClass = {
     "fade-up": "scroll-animate",
     "slide-left": "scroll-animate-left",
     "slide-right": "scroll-animate-right",
     scale: "scroll-animate-scale",
+    staggered: "scroll-animate-staggered",
   }[animation]
 
   return (
@@ -72,4 +89,22 @@ export function useScrollAnimation() {
   }, [])
 
   return elementRef
+}
+
+export function usePageTransition() {
+  useEffect(() => {
+    const handleRouteChange = () => {
+      document.body.classList.add("page-transition")
+      setTimeout(() => {
+        document.body.classList.remove("page-transition")
+      }, 300)
+    }
+
+    // Listen for navigation events
+    window.addEventListener("beforeunload", handleRouteChange)
+
+    return () => {
+      window.removeEventListener("beforeunload", handleRouteChange)
+    }
+  }, [])
 }

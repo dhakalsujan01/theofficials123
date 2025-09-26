@@ -25,18 +25,22 @@ export function TrustSignals() {
   }, [])
 
   const partnerLogos = [
-    { name: "University of Oxford", logo: "/placeholder.svg?height=60&width=120&text=Oxford" },
-    { name: "University of Cambridge", logo: "/placeholder.svg?height=60&width=120&text=Cambridge" },
-    { name: "Imperial College London", logo: "/placeholder.svg?height=60&width=120&text=Imperial" },
-    { name: "University College London", logo: "/placeholder.svg?height=60&width=120&text=UCL" },
-    { name: "King's College London", logo: "/placeholder.svg?height=60&width=120&text=Kings" },
-    { name: "University of Edinburgh", logo: "/placeholder.svg?height=60&width=120&text=Edinburgh" },
-    { name: "University of Manchester", logo: "/placeholder.svg?height=60&width=120&text=Manchester" },
-    { name: "University of Warwick", logo: "/placeholder.svg?height=60&width=120&text=Warwick" },
-    { name: "BBC Education", logo: "/placeholder.svg?height=60&width=120&text=BBC" },
-    { name: "Times Higher Education", logo: "/placeholder.svg?height=60&width=120&text=THE" },
-    { name: "QS World Rankings", logo: "/placeholder.svg?height=60&width=120&text=QS" },
-    { name: "British Council", logo: "/placeholder.svg?height=60&width=120&text=British+Council" },
+    { name: "University of Oxford", logo: "/university-oxford-logo-professional.jpg" },
+    { name: "University of Cambridge", logo: "/university-cambridge-logo-professional.jpg" },
+    { name: "Imperial College London", logo: "/imperial-college-london-logo-professional.jpg" },
+    { name: "University College London", logo: "/ucl-university-college-london-logo-professional.jpg" },
+    { name: "King's College London", logo: "/kings-college-london-logo-professional.jpg" },
+    { name: "University of Edinburgh", logo: "/university-edinburgh-logo-professional.jpg" },
+    { name: "University of Manchester", logo: "/university-manchester-logo-professional.jpg" },
+    { name: "University of Warwick", logo: "/university-warwick-logo-professional.jpg" },
+    { name: "BBC Education", logo: "/bbc-education-logo-professional.jpg" },
+    { name: "Times Higher Education", logo: "/times-higher-education-logo-professional.jpg" },
+    { name: "QS World Rankings", logo: "/qs-world-rankings-logo-professional.jpg" },
+    { name: "British Council", logo: "/british-council-logo-professional.jpg" },
+    { name: "University of Bristol", logo: "/university-bristol-logo-professional.jpg" },
+    { name: "University of Glasgow", logo: "/university-glasgow-logo-professional.jpg" },
+    { name: "University of Birmingham", logo: "/university-birmingham-logo-professional.jpg" },
+    { name: "University of Leeds", logo: "/university-leeds-logo-professional.jpg" },
   ]
 
   return (

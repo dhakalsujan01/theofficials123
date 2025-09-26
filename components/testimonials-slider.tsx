@@ -40,7 +40,7 @@ export function TestimonialsSlider() {
       name: "Dr. Sarah Mitchell",
       position: "International Admissions Director",
       institution: "University of Edinburgh",
-      image: "/placeholder.svg?height=80&width=80&text=SM",
+      image: "/testimonial-dr-sarah-mitchell-professional-headshot.jpg",
       rating: 5,
       quote:
         "THE OFFICIALS has transformed our international recruitment strategy. Their professional approach and extensive agent network have helped us achieve a 40% increase in quality applications from diverse markets.",
@@ -50,7 +50,7 @@ export function TestimonialsSlider() {
       name: "Rajesh Sharma",
       position: "Senior Education Consultant",
       institution: "Global Education Partners, India",
-      image: "/placeholder.svg?height=80&width=80&text=RS",
+      image: "/testimonial-rajesh-sharma-professional-headshot.jpg",
       rating: 5,
       quote:
         "Working with THE OFFICIALS has been exceptional. Their comprehensive support, training programs, and university partnerships have enabled us to provide the best guidance to our students while growing our business significantly.",
@@ -60,7 +60,7 @@ export function TestimonialsSlider() {
       name: "Prof. James Wilson",
       position: "Vice-Chancellor",
       institution: "Manchester Metropolitan University",
-      image: "/placeholder.svg?height=80&width=80&text=JW",
+      image: "/testimonial-prof-james-wilson-professional-headshot.jpg",
       rating: 5,
       quote:
         "The quality of students and the professionalism of THE OFFICIALS team is outstanding. They understand our requirements and consistently deliver results that exceed our expectations.",
@@ -70,7 +70,7 @@ export function TestimonialsSlider() {
       name: "Maria Rodriguez",
       position: "Director",
       institution: "StudyAbroad Solutions, Mexico",
-      image: "/placeholder.svg?height=80&width=80&text=MR",
+      image: "/testimonial-maria-rodriguez-professional-headshot.jpg",
       rating: 5,
       quote:
         "THE OFFICIALS provides unmatched support and resources. Their technology platform and dedicated account management have streamlined our operations and improved our success rates dramatically.",
@@ -80,7 +80,7 @@ export function TestimonialsSlider() {
       name: "Dr. Emily Chen",
       position: "Head of International Relations",
       institution: "Imperial College London",
-      image: "/placeholder.svg?height=80&width=80&text=EC",
+      image: "/testimonial-dr-emily-chen-professional-headshot.jpg",
       rating: 5,
       quote:
         "Their deep understanding of global markets and commitment to quality has made THE OFFICIALS our preferred recruitment partner. The results speak for themselves - consistent growth year over year.",
@@ -90,7 +90,7 @@ export function TestimonialsSlider() {
       name: "Ahmed Al-Rashid",
       position: "Managing Director",
       institution: "Middle East Education Hub, UAE",
-      image: "/placeholder.svg?height=80&width=80&text=AR",
+      image: "/testimonial-ahmed-al-rashid-professional-headshot.jpg",
       rating: 5,
       quote:
         "The partnership with THE OFFICIALS has been transformative for our business. Their comprehensive training, marketing support, and university relationships have positioned us as market leaders.",

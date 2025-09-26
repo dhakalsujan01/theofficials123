@@ -1,164 +1,172 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Calendar, Play, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowRight, Plane } from "lucide-react"
 import Link from "next/link"
-
-const heroImages = [
-  "/students-studying-abroad.png",
-  "/university-campus-with-international-students.jpg",
-  "/graduation-ceremony-with-diverse-students.jpg",
-  "/modern-university-library.png",
-]
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
-  const [showVideo, setShowVideo] = useState(false)
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [animationStarted, setAnimationStarted] = useState(false)
+  const heroRef = useRef<HTMLDivElement>(null)
+  const planeRef = useRef<HTMLDivElement>(null)
+  const pathRef = useRef<SVGPathElement>(null)
 
   useEffect(() => {
     setMounted(true)
-    // Auto-advance carousel
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length)
-    }, 5000)
-    return () => clearInterval(interval)
+    // Start animation sequence after component mounts
+    const timer = setTimeout(() => {
+      setAnimationStarted(true)
+    }, 500)
+    return () => clearTimeout(timer)
   }, [])
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % heroImages.length)
-  }
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (heroRef.current) {
+        const rect = heroRef.current.getBoundingClientRect()
+        const x = (e.clientX - rect.left) / rect.width
+        const y = (e.clientY - rect.top) / rect.height
+        setMousePosition({ x, y })
+      }
+    }
 
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length)
+    const heroElement = heroRef.current
+    if (heroElement) {
+      heroElement.addEventListener("mousemove", handleMouseMove)
+      return () => heroElement.removeEventListener("mousemove", handleMouseMove)
+    }
+  }, [])
+
+  // Parallax transform calculations
+  const getParallaxTransform = (intensity: number) => {
+    const x = (mousePosition.x - 0.5) * intensity
+    const y = (mousePosition.y - 0.5) * intensity
+    return `translate(${x}px, ${y}px)`
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Multi-layered Background */}
       <div className="absolute inset-0">
-        {showVideo ? (
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-            onError={() => setShowVideo(false)}
-          >
-            <source src="/videos/education-hero.mp4" type="video/mp4" />
-            <source src="/videos/education-hero.webm" type="video/webm" />
-          </video>
-        ) : (
-          <div className="relative w-full h-full">
-            {/* Image Carousel */}
-            <div className="absolute inset-0">
-              {heroImages.map((image, index) => (
-                <div
-                  key={index}
-                  className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-                    index === currentImageIndex ? "opacity-100" : "opacity-0"
-                  }`}
-                  style={{ backgroundImage: `url('${image}')` }}
-                />
-              ))}
-            </div>
+        {/* Base Layer: University Architecture Photo */}
+        <div
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-300 ease-out"
+          style={{
+            backgroundImage: `url('/modern-iconic-university-architecture-professional.jpg')`,
+            transform: getParallaxTransform(10),
+          }}
+        />
 
-            {/* Carousel Controls */}
-            <button
-              onClick={prevImage}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm rounded-full p-3 hover:bg-white/30 transition-all duration-300"
-            >
-              <ChevronLeft className="w-6 h-6 text-white" />
-            </button>
-            <button
-              onClick={nextImage}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm rounded-full p-3 hover:bg-white/30 transition-all duration-300"
-            >
-              <ChevronRight className="w-6 h-6 text-white" />
-            </button>
+        {/* Dark Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/50" />
 
-            {/* Carousel Indicators */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
-              {heroImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImageIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentImageIndex ? "bg-white" : "bg-white/50"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/85 to-accent/80"></div>
+        {/* Mid Layer: Stylized World Map */}
+        <div
+          className="absolute inset-0 opacity-20 transition-transform duration-300 ease-out"
+          style={{
+            backgroundImage: `url('/stylized-world-map-semi-transparent-overlay.jpg')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            transform: getParallaxTransform(-5),
+          }}
+        />
       </div>
 
-      {!showVideo && (
-        <button
-          onClick={() => setShowVideo(true)}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm rounded-full p-6 hover:bg-white/30 transition-all duration-300 hover:scale-110 group"
+      {/* Animated Flight Path */}
+      <div className="absolute inset-0 pointer-events-none">
+        <svg className="w-full h-full" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <path id="flightPath" d="M 200,800 Q 600,200 1000,400 T 1720,300" fill="none" />
+          </defs>
+
+          {/* Animated Dotted Line */}
+          <path
+            ref={pathRef}
+            d="M 200,800 Q 600,200 1000,400 T 1720,300"
+            fill="none"
+            stroke="rgba(255,255,255,0.6)"
+            strokeWidth="3"
+            strokeDasharray="10,10"
+            className={animationStarted ? "animate-draw-line" : "opacity-0"}
+          />
+        </svg>
+
+        {/* Animated Airplane */}
+        <div
+          ref={planeRef}
+          className={`absolute ${animationStarted ? "animate-fly-plane" : "opacity-0"}`}
+          style={{
+            offsetPath: "path('M 200,800 Q 600,200 1000,400 T 1720,300')",
+            offsetRotate: "auto",
+          }}
         >
-          <Play className="w-12 h-12 text-white ml-1 group-hover:scale-110 transition-transform" />
-        </button>
-      )}
-
-      {/* Auto-start video after 3 seconds */}
-      {!showVideo && mounted && (
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-          <div className="animate-ping absolute inline-flex h-32 w-32 rounded-full bg-white/20"></div>
+          <div className="w-8 h-8 text-white">
+            <Plane className="w-full h-full" />
+          </div>
         </div>
-      )}
+      </div>
 
-      {/* Floating Elements with enhanced animations */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-accent/20 rounded-full animate-float"></div>
+      {/* Floating Parallax Elements */}
       <div
-        className="absolute bottom-32 right-16 w-16 h-16 bg-accent/30 rounded-full animate-float"
-        style={{ animationDelay: "2s" }}
-      ></div>
+        className="absolute top-20 left-10 w-20 h-20 bg-blue-500/20 rounded-full animate-parallax-float"
+        style={{ transform: getParallaxTransform(15) }}
+      />
       <div
-        className="absolute top-1/3 right-20 w-12 h-12 bg-accent/40 rounded-full animate-float"
-        style={{ animationDelay: "4s" }}
-      ></div>
+        className="absolute bottom-32 right-16 w-16 h-16 bg-green-500/30 rounded-full animate-parallax-float"
+        style={{
+          transform: getParallaxTransform(-10),
+          animationDelay: "2s",
+        }}
+      />
       <div
-        className="absolute top-1/4 left-1/4 w-8 h-8 bg-primary-foreground/20 rounded-full animate-float"
-        style={{ animationDelay: "1s" }}
-      ></div>
-      <div
-        className="absolute bottom-1/4 left-1/3 w-14 h-14 bg-accent/25 rounded-full animate-float"
-        style={{ animationDelay: "3s" }}
-      ></div>
+        className="absolute top-1/3 right-20 w-12 h-12 bg-blue-400/40 rounded-full animate-parallax-float"
+        style={{
+          transform: getParallaxTransform(8),
+          animationDelay: "4s",
+        }}
+      />
 
+      {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div
           className={`transition-all duration-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
+          {/* Main Headline */}
           <div className="mb-8">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-4 text-balance leading-tight">
+            <h1
+              className={`text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 text-balance leading-tight ${animationStarted ? "animate-staggered-fade-in" : "opacity-0"}`}
+              style={{ animationDelay: "3.5s" }}
+            >
               Let's Work Together
             </h1>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 text-balance leading-tight">
-              Your Journey to{" "}
-              <span className="text-accent bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent animate-pulse">
-                Global Education
-              </span>{" "}
-              Starts Here
+            <h2
+              className={`text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8 text-balance leading-tight ${animationStarted ? "animate-staggered-fade-in" : "opacity-0"}`}
+              style={{ animationDelay: "4s" }}
+            >
+              And <span className="text-shimmer">Grow Together</span>
             </h2>
           </div>
 
-          {/* Enhanced subtitle with better spacing */}
-          <p className="text-xl md:text-2xl lg:text-3xl text-white/95 mb-12 max-w-4xl mx-auto text-pretty font-light leading-relaxed">
-            And grow together. Connecting universities with trusted recruitment agents worldwide for educational
-            excellence.
+          {/* Enhanced subtitle */}
+          <p
+            className={`text-xl md:text-2xl lg:text-3xl text-white/95 mb-12 max-w-4xl mx-auto text-pretty font-light leading-relaxed ${animationStarted ? "animate-staggered-fade-in" : "opacity-0"}`}
+            style={{ animationDelay: "4.5s" }}
+          >
+            Premium B2B student recruitment platform connecting universities with trusted agents worldwide for
+            educational excellence.
           </p>
 
-          {/* Enhanced CTA buttons with better styling and spacing */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+          {/* CTA Buttons */}
+          <div
+            className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 ${animationStarted ? "animate-staggered-fade-in" : "opacity-0"}`}
+            style={{ animationDelay: "5s" }}
+          >
             <Link href="/partner">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-accent to-accent/90 hover:from-accent/90 hover:to-accent text-white text-xl px-10 py-6 font-bold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 rounded-full"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-xl px-10 py-6 font-bold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 rounded-full btn-hover btn-press"
               >
                 Partner With Us
                 <ArrowRight className="ml-3 h-6 w-6" />
@@ -168,48 +176,46 @@ export function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-white border-2 border-white/80 hover:bg-white hover:text-primary text-xl px-10 py-6 bg-white/10 backdrop-blur-sm font-bold rounded-full transition-all duration-300 hover:scale-105"
+                className="text-white border-2 border-white/80 hover:bg-white hover:text-primary text-xl px-10 py-6 bg-white/10 backdrop-blur-sm font-bold rounded-full transition-all duration-300 hover:scale-105 btn-press"
               >
                 Explore Destinations
               </Button>
             </Link>
-            <Link href="/contact">
-              <Button
-                size="lg"
-                variant="ghost"
-                className="text-white hover:bg-white/20 text-xl px-10 py-6 font-bold backdrop-blur-sm rounded-full transition-all duration-300 hover:scale-105"
-              >
-                <Calendar className="mr-3 h-6 w-6" />
-                Book Free Consultation
-              </Button>
-            </Link>
           </div>
 
-          {/* Enhanced Quick Stats with better visual hierarchy */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            <div className="text-center group bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-              <div className="text-4xl md:text-5xl font-bold text-accent mb-3 group-hover:scale-110 transition-transform">
+          {/* Quick Stats with Counter Animation */}
+          <div
+            className={`grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto ${animationStarted ? "animate-staggered-fade-in" : "opacity-0"}`}
+            style={{ animationDelay: "5.5s" }}
+          >
+            <div className="text-center group bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-all duration-300 card-lift">
+              <div
+                className={`text-5xl md:text-6xl font-bold text-green-400 mb-3 group-hover:scale-110 transition-transform ${animationStarted ? "animate-counter-up" : "opacity-0"}`}
+                style={{ animationDelay: "6s" }}
+              >
                 35+
               </div>
-              <div className="text-white/90 text-base md:text-lg font-medium">UK Universities</div>
+              <div className="text-white/90 text-lg md:text-xl font-medium">UK Universities</div>
             </div>
-            <div className="text-center group bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-              <div className="text-4xl md:text-5xl font-bold text-accent mb-3 group-hover:scale-110 transition-transform">
+
+            <div className="text-center group bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-all duration-300 card-lift">
+              <div
+                className={`text-5xl md:text-6xl font-bold text-green-400 mb-3 group-hover:scale-110 transition-transform ${animationStarted ? "animate-counter-up" : "opacity-0"}`}
+                style={{ animationDelay: "6.2s" }}
+              >
                 1500+
               </div>
-              <div className="text-white/90 text-base md:text-lg font-medium">Global Agents</div>
+              <div className="text-white/90 text-lg md:text-xl font-medium">Agents Globally</div>
             </div>
-            <div className="text-center group bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-              <div className="text-4xl md:text-5xl font-bold text-accent mb-3 group-hover:scale-110 transition-transform">
-                25K+
+
+            <div className="text-center group bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-all duration-300 card-lift">
+              <div
+                className={`text-5xl md:text-6xl font-bold text-green-400 mb-3 group-hover:scale-110 transition-transform ${animationStarted ? "animate-counter-up" : "opacity-0"}`}
+                style={{ animationDelay: "6.4s" }}
+              >
+                3
               </div>
-              <div className="text-white/90 text-base md:text-lg font-medium">Students Placed</div>
-            </div>
-            <div className="text-center group bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-              <div className="text-4xl md:text-5xl font-bold text-accent mb-3 group-hover:scale-110 transition-transform">
-                15+
-              </div>
-              <div className="text-white/90 text-base md:text-lg font-medium">Countries</div>
+              <div className="text-white/90 text-lg md:text-xl font-medium">Global Offices</div>
             </div>
           </div>
         </div>

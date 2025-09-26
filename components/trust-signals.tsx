@@ -1,27 +1,11 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
-import { Users, GraduationCap, Globe, Award, TrendingUp, CheckCircle } from "lucide-react"
 
 export function TrustSignals() {
   const [isVisible, setIsVisible] = useState(false)
-  const [counts, setCounts] = useState({
-    agents: 0,
-    universities: 0,
-    students: 0,
-    countries: 0,
-  })
   const sectionRef = useRef<HTMLDivElement>(null)
-
-  const finalCounts = {
-    agents: 1500,
-    universities: 35,
-    students: 25000,
-    countries: 15,
-  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,147 +24,98 @@ export function TrustSignals() {
     return () => observer.disconnect()
   }, [])
 
-  useEffect(() => {
-    if (isVisible) {
-      const duration = 2000
-      const steps = 60
-      const stepDuration = duration / steps
-
-      let currentStep = 0
-      const timer = setInterval(() => {
-        currentStep++
-        const progress = currentStep / steps
-
-        setCounts({
-          agents: Math.floor(finalCounts.agents * progress),
-          universities: Math.floor(finalCounts.universities * progress),
-          students: Math.floor(finalCounts.students * progress),
-          countries: Math.floor(finalCounts.countries * progress),
-        })
-
-        if (currentStep >= steps) {
-          clearInterval(timer)
-          setCounts(finalCounts)
-        }
-      }, stepDuration)
-
-      return () => clearInterval(timer)
-    }
-  }, [isVisible])
-
-  const stats = [
-    {
-      icon: Users,
-      count: counts.agents,
-      suffix: "+",
-      label: "Global Agents",
-      description: "Trusted recruitment partners worldwide",
-      color: "text-accent",
-    },
-    {
-      icon: GraduationCap,
-      count: counts.universities,
-      suffix: "+",
-      label: "UK Universities",
-      description: "Premier institution partnerships",
-      color: "text-primary",
-    },
-    {
-      icon: TrendingUp,
-      count: counts.students,
-      suffix: "+",
-      label: "Students Placed",
-      description: "Successful placements annually",
-      color: "text-accent",
-    },
-    {
-      icon: Globe,
-      count: counts.countries,
-      suffix: "+",
-      label: "Countries",
-      description: "Global presence and reach",
-      color: "text-primary",
-    },
-  ]
-
-  const certifications = [
-    {
-      name: "British Council",
-      logo: "/british-council-certification.jpg",
-      description: "Certified Education Agent",
-    },
-    {
-      name: "ICEF",
-      logo: "/icef-membership-logo.jpg",
-      description: "Quality Network Member",
-    },
-    {
-      name: "PIER",
-      logo: "/pier-certification.jpg",
-      description: "Professional Standards",
-    },
+  const partnerLogos = [
+    { name: "University of Oxford", logo: "/placeholder.svg?height=60&width=120&text=Oxford" },
+    { name: "University of Cambridge", logo: "/placeholder.svg?height=60&width=120&text=Cambridge" },
+    { name: "Imperial College London", logo: "/placeholder.svg?height=60&width=120&text=Imperial" },
+    { name: "University College London", logo: "/placeholder.svg?height=60&width=120&text=UCL" },
+    { name: "King's College London", logo: "/placeholder.svg?height=60&width=120&text=Kings" },
+    { name: "University of Edinburgh", logo: "/placeholder.svg?height=60&width=120&text=Edinburgh" },
+    { name: "University of Manchester", logo: "/placeholder.svg?height=60&width=120&text=Manchester" },
+    { name: "University of Warwick", logo: "/placeholder.svg?height=60&width=120&text=Warwick" },
+    { name: "BBC Education", logo: "/placeholder.svg?height=60&width=120&text=BBC" },
+    { name: "Times Higher Education", logo: "/placeholder.svg?height=60&width=120&text=THE" },
+    { name: "QS World Rankings", logo: "/placeholder.svg?height=60&width=120&text=QS" },
+    { name: "British Council", logo: "/placeholder.svg?height=60&width=120&text=British+Council" },
   ]
 
   return (
-    <section ref={sectionRef} className="py-16 bg-gradient-to-br from-background to-secondary/20">
-      <div className="container mx-auto px-4">
-        {/* Trust Statistics */}
+    <section ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4 text-primary border-primary/20">
-            <Award className="w-4 h-4 mr-2" />
-            Trusted Globally
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Building Trust Through Excellence</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Our track record speaks for itself. Join thousands of satisfied partners in our global education network.
+          <h2
+            className={`text-4xl md:text-5xl font-bold text-gray-900 mb-6 ${isVisible ? "animate-staggered-fade-in" : "opacity-0"}`}
+            style={{ animationDelay: "0.2s" }}
+          >
+            Trusted By The Best
+          </h2>
+          <p
+            className={`text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed ${isVisible ? "animate-staggered-fade-in" : "opacity-0"}`}
+            style={{ animationDelay: "0.4s" }}
+          >
+            Leading universities and media organizations worldwide trust THE OFFICIALS for premium student recruitment
+            services.
           </p>
         </div>
 
-        {/* Animated Statistics Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {stats.map((stat, index) => (
-            <Card
-              key={index}
-              className={`p-6 text-center card-hover border-2 border-transparent hover:border-accent/20 ${
-                isVisible ? "animate-fade-in-up" : "opacity-0"
-              }`}
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
+        <div className="relative overflow-hidden">
+          <div className="flex animate-scroll">
+            {/* First set of logos */}
+            {partnerLogos.map((partner, index) => (
               <div
-                className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 mb-4`}
+                key={`first-${index}`}
+                className="flex-shrink-0 mx-8 flex items-center justify-center"
+                style={{ minWidth: "160px" }}
               >
-                <stat.icon className={`w-8 h-8 ${stat.color}`} />
-              </div>
-              <div className="text-4xl font-bold text-primary mb-2">
-                {stat.count.toLocaleString()}
-                {stat.suffix}
-              </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">{stat.label}</h3>
-              <p className="text-sm text-muted-foreground">{stat.description}</p>
-            </Card>
-          ))}
-        </div>
-
-        {/* Certifications and Memberships */}
-        <div className="text-center">
-          <h3 className="text-2xl font-semibold text-primary mb-8">Certified & Accredited</h3>
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            {certifications.map((cert, index) => (
-              <Card key={index} className="p-6 card-hover bg-card/50 backdrop-blur-sm border border-border/50">
-                <div className="flex flex-col items-center">
+                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 group">
                   <Image
-                    src={cert.logo || "/placeholder.svg"}
-                    alt={cert.name}
+                    src={partner.logo || "/placeholder.svg"}
+                    alt={partner.name}
                     width={120}
                     height={60}
-                    className="mb-3 opacity-80 hover:opacity-100 transition-opacity"
+                    className="max-h-12 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity"
                   />
-                  <h4 className="font-medium text-foreground mb-1">{cert.name}</h4>
-                  <p className="text-xs text-muted-foreground text-center">{cert.description}</p>
-                  <CheckCircle className="w-4 h-4 text-accent mt-2" />
                 </div>
-              </Card>
+              </div>
             ))}
+            {/* Duplicate set for seamless loop */}
+            {partnerLogos.map((partner, index) => (
+              <div
+                key={`second-${index}`}
+                className="flex-shrink-0 mx-8 flex items-center justify-center"
+                style={{ minWidth: "160px" }}
+              >
+                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 group">
+                  <Image
+                    src={partner.logo || "/placeholder.svg"}
+                    alt={partner.name}
+                    width={120}
+                    height={60}
+                    className="max-h-12 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div
+          className={`mt-16 text-center ${isVisible ? "animate-staggered-fade-in" : "opacity-0"}`}
+          style={{ animationDelay: "0.6s" }}
+        >
+          <div className="flex flex-wrap justify-center items-center gap-8 text-gray-500">
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span className="text-sm font-medium">ISO 9001 Certified</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <span className="text-sm font-medium">ICEF Quality Network</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+              <span className="text-sm font-medium">British Council Certified</span>
+            </div>
           </div>
         </div>
       </div>

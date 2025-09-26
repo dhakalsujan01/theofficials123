@@ -10,7 +10,7 @@ export function WhatsAppChat() {
 
   const handleSendMessage = () => {
     if (message.trim()) {
-      const whatsappUrl = `https://wa.me/1234567890?text=${encodeURIComponent(message)}`
+      const whatsappUrl = `https://wa.me/9779805869216?text=${encodeURIComponent(message)}`
       window.open(whatsappUrl, "_blank")
       setMessage("")
       setIsOpen(false)
@@ -18,9 +18,9 @@ export function WhatsAppChat() {
   }
 
   const quickMessages = [
-    "I want to study abroad",
+    "I want to partner with THE OFFICIALS",
     "Tell me about UK universities",
-    "I need help with applications",
+    "I need help with student recruitment",
     "Book a consultation",
   ]
 
@@ -37,7 +37,7 @@ export function WhatsAppChat() {
                   <MessageCircle className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">Franklin Education</h3>
+                  <h3 className="font-semibold">THE OFFICIALS</h3>
                   <p className="text-xs text-green-100">Typically replies instantly</p>
                 </div>
               </div>
@@ -57,8 +57,8 @@ export function WhatsAppChat() {
             {/* Welcome Message */}
             <div className="bg-gray-100 rounded-2xl rounded-tl-sm p-3">
               <p className="text-sm text-gray-800">
-                👋 Hi there! Welcome to Franklin Education Consultancy. How can we help you with your study abroad
-                journey?
+                Welcome to THE OFFICIALS! We're your premium global education partners. How can we help you grow your
+                student recruitment business?
               </p>
             </div>
 

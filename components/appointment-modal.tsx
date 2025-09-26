@@ -32,7 +32,7 @@ export function AppointmentModal({ isOpen, onClose }: AppointmentModalProps) {
     // Handle form submission here
     console.log("Appointment booking:", formData)
     // You can integrate with your backend or email service
-    alert("Thank you! We'll contact you soon to confirm your appointment.")
+    alert("Thank you! THE OFFICIALS team will contact you soon to confirm your consultation.")
     onClose()
     setFormData({
       name: "",
@@ -55,7 +55,7 @@ export function AppointmentModal({ isOpen, onClose }: AppointmentModalProps) {
         <DialogHeader>
           <DialogTitle className="flex items-center text-2xl font-bold text-primary">
             <Calendar className="w-6 h-6 mr-2 text-accent" />
-            Book Your Free Consultation
+            Book Your Premium Consultation
           </DialogTitle>
         </DialogHeader>
 
@@ -119,10 +119,11 @@ export function AppointmentModal({ isOpen, onClose }: AppointmentModalProps) {
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="study-abroad">Study Abroad Consultation</SelectItem>
                   <SelectItem value="university-partnership">University Partnership</SelectItem>
-                  <SelectItem value="agent-recruitment">Agent Recruitment</SelectItem>
-                  <SelectItem value="visa-assistance">Visa Assistance</SelectItem>
+                  <SelectItem value="agent-network">Join Agent Network</SelectItem>
+                  <SelectItem value="student-recruitment">Student Recruitment Services</SelectItem>
+                  <SelectItem value="market-expansion">Market Expansion Strategy</SelectItem>
+                  <SelectItem value="compliance-support">Compliance & Quality Support</SelectItem>
                   <SelectItem value="other">Other</SelectItem>
                 </SelectContent>
               </Select>
@@ -174,7 +175,7 @@ export function AppointmentModal({ isOpen, onClose }: AppointmentModalProps) {
                 id="message"
                 value={formData.message}
                 onChange={(e) => handleChange("message", e.target.value)}
-                placeholder="Tell us more about your requirements or questions..."
+                placeholder="Tell us about your goals, target markets, or specific requirements..."
                 rows={3}
                 className="mt-1"
               />
@@ -189,7 +190,7 @@ export function AppointmentModal({ isOpen, onClose }: AppointmentModalProps) {
               type="submit"
               className="flex-1 bg-gradient-to-r from-accent to-accent/90 hover:from-accent/90 hover:to-accent"
             >
-              Book Appointment
+              Book Consultation
             </Button>
           </div>
         </form>

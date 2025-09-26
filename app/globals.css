@@ -1,79 +1,81 @@
 @import "tailwindcss";
-/* Removed invalid tw-animate-css import that was causing deployment error */
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color palette to match Franklin banner - light purple background, vibrant green, blue/purple primary */
-  --background: #f3f1f8; /* Light purple background from banner */
-  --foreground: #1a1a2e; /* Dark text for contrast */
-  --card: #ffffff;
-  --card-foreground: #1a1a2e;
-  --popover: #ffffff;
-  --popover-foreground: #1a1a2e;
-  --primary: #6366f1; /* Blue/purple from "STUDY ABROAD" text */
-  --primary-foreground: #ffffff;
-  --secondary: #e8e4f3; /* Lighter purple for secondary elements */
-  --secondary-foreground: #6366f1;
-  --muted: #e8e4f3;
-  --muted-foreground: #64748b;
-  --accent: #00d084; /* Vibrant green from "MAKE YOUR FUTURE WITH US" */
-  --accent-foreground: #ffffff;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: #e2e8f0;
-  --input: #f8fafc;
-  --ring: #6366f1;
-  --chart-1: #6366f1;
-  --chart-2: #00d084;
-  --chart-3: #f59e0b;
-  --chart-4: #ef4444;
-  --chart-5: #8b5cf6;
-  --radius: 0.75rem;
-  --sidebar: #ffffff;
-  --sidebar-foreground: #1a1a2e;
-  --sidebar-primary: #6366f1;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #e8e4f3;
-  --sidebar-accent-foreground: #6366f1;
-  --sidebar-border: #e2e8f0;
-  --sidebar-ring: #6366f1;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 .dark {
-  --background: #0f0f23;
-  --foreground: #f8fafc;
-  --card: #1e1e3f;
-  --card-foreground: #f8fafc;
-  --popover: #1e1e3f;
-  --popover-foreground: #f8fafc;
-  --primary: #818cf8;
-  --primary-foreground: #0f0f23;
-  --secondary: #1e1e3f;
-  --secondary-foreground: #f8fafc;
-  --muted: #1e1e3f;
-  --muted-foreground: #94a3b8;
-  --accent: #10b981;
-  --accent-foreground: #0f0f23;
-  --destructive: #f87171;
-  --destructive-foreground: #f8fafc;
-  --border: #374151;
-  --input: #374151;
-  --ring: #818cf8;
-  --sidebar: #1e1e3f;
-  --sidebar-foreground: #f8fafc;
-  --sidebar-primary: #818cf8;
-  --sidebar-primary-foreground: #0f0f23;
-  --sidebar-accent: #374151;
-  --sidebar-accent-foreground: #f8fafc;
-  --sidebar-border: #374151;
-  --sidebar-ring: #818cf8;
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
 }
 
 @theme inline {
-  --font-sans: var(--font-poppins);
-  --font-mono: var(--font-jetbrains-mono);
-  /* Updated font variable to match the actual JetBrains Mono variable */
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -122,50 +124,50 @@
 }
 
 /* Enhanced animations and effects for the education platform */
-@keyframes float {
+/* Enhanced animations for sophisticated motion design system */
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes flyPlane {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes parallaxFloat {
   0%,
   100% {
-    transform: translateY(0px);
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-5px) translateX(-5px);
+  }
+  75% {
+    transform: translateY(-15px) translateX(3px);
   }
 }
 
-@keyframes countUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInUp {
+@keyframes staggeredFadeIn {
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -176,14 +178,54 @@
   }
 }
 
-/* Added scroll animation for footer university logos */
-@keyframes scroll {
+@keyframes counterUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gradientSweep {
   0% {
-    transform: translateX(0);
+    background-position: -200% center;
   }
   100% {
-    transform: translateX(-50%);
+    background-position: 200% center;
   }
+}
+
+.animate-draw-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 3s ease-in-out forwards;
+}
+
+.animate-fly-plane {
+  animation: flyPlane 4s ease-in-out forwards;
+  animation-delay: 2s;
+}
+
+.animate-parallax-float {
+  animation: parallaxFloat 8s ease-in-out infinite;
+}
+
+.animate-staggered-fade-in {
+  opacity: 0;
+  animation: staggeredFadeIn 0.8s ease-out forwards;
+}
+
+.animate-counter-up {
+  animation: counterUp 1s ease-out forwards;
+}
+
+.btn-gradient-sweep {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background-size: 200% 100%;
+  animation: gradientSweep 2s ease-in-out;
 }
 
 .animate-float {
@@ -206,7 +248,16 @@
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Added scroll animation class for footer */
+/* Added scroll animation for footer university logos */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .animate-scroll {
   animation: scroll 30s linear infinite;
 }
@@ -222,6 +273,25 @@
 }
 
 /* Card hover effects */
+/* Sophisticated hover effects for premium feel */
+.card-lift {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-lift:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(30, 64, 175, 0.15);
+}
+
+.text-shimmer {
+  background: linear-gradient(90deg, #1e40af, #059669, #1e40af);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientSweep 3s ease-in-out infinite;
+}
+
 .card-hover {
   transition: all 0.3s ease;
 }
@@ -232,6 +302,36 @@
 }
 
 /* Interactive tab underline animation */
+/* Professional microinteractions */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #059669;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.btn-press {
+  transition: all 0.1s ease;
+}
+
+.btn-press:active {
+  transform: scale(0.98);
+}
+
 .tab-underline {
   position: relative;
   overflow: hidden;

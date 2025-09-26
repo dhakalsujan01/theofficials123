@@ -24,39 +24,39 @@ export function EnhancedFooter() {
     {
       location: "Nepal",
       address: "Kathmandu, Nepal",
-      phone: "+977-1-XXXXXXX",
-      email: "nepal@franklin-edu.com",
+      phone: "+977-9805869216",
+      email: "nepal@theofficials.com",
     },
     {
       location: "London",
       address: "London, United Kingdom",
       phone: "+44-20-XXXXXXX",
-      email: "london@franklin-edu.com",
+      email: "london@theofficials.com",
     },
     {
       location: "Dubai",
       address: "Dubai, UAE",
       phone: "+971-4-XXXXXXX",
-      email: "dubai@franklin-edu.com",
+      email: "dubai@theofficials.com",
     },
   ]
 
   const certifications = [
-    { name: "British Council", logo: "/british-council-logo.jpg" },
-    { name: "ICEF", logo: "/icef-certification-logo.jpg" },
-    { name: "PIER", logo: "/pier-membership-logo.jpg" },
-    { name: "AIRC", logo: "/airc-certification-logo.jpg" },
+    { name: "British Council", logo: "/placeholder.svg?height=40&width=120&text=British+Council" },
+    { name: "ICEF", logo: "/placeholder.svg?height=40&width=120&text=ICEF" },
+    { name: "PIER", logo: "/placeholder.svg?height=40&width=120&text=PIER" },
+    { name: "AIRC", logo: "/placeholder.svg?height=40&width=120&text=AIRC" },
   ]
 
   const universityLogos = [
-    "/university-of-oxford-logo.jpg",
-    "/cambridge-university-logo.png",
-    "/imperial-college-london-logo.jpg",
-    "/ucl-logo.jpg",
-    "/king-s-college-london-logo.jpg",
-    "/university-of-edinburgh-logo.png",
-    "/university-of-manchester-logo.png",
-    "/university-of-warwick-logo.jpg",
+    "/placeholder.svg?height=30&width=100&text=Oxford",
+    "/placeholder.svg?height=30&width=100&text=Cambridge",
+    "/placeholder.svg?height=30&width=100&text=Imperial",
+    "/placeholder.svg?height=30&width=100&text=UCL",
+    "/placeholder.svg?height=30&width=100&text=Kings",
+    "/placeholder.svg?height=30&width=100&text=Edinburgh",
+    "/placeholder.svg?height=30&width=100&text=Manchester",
+    "/placeholder.svg?height=30&width=100&text=Warwick",
   ]
 
   return (
@@ -65,9 +65,9 @@ export function EnhancedFooter() {
       <div className="border-b border-primary-foreground/20">
         <div className="container mx-auto px-4 py-12">
           <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-2xl font-semibold mb-4">Get the Latest Industry Insights</h3>
+            <h3 className="text-2xl font-semibold mb-4">Stay Connected with THE OFFICIALS</h3>
             <p className="text-primary-foreground/80 mb-6">
-              Stay updated with the latest trends in international education and student recruitment.
+              Get exclusive insights on global education trends, university partnerships, and recruitment opportunities.
             </p>
             <form onSubmit={handleNewsletterSubmit} className="flex gap-4 max-w-md mx-auto">
               <Input
@@ -233,13 +233,14 @@ export function EnhancedFooter() {
           <div>
             <h4 className="font-semibold text-lg mb-4 flex items-center">
               <MapPin className="w-5 h-5 mr-2" />
-              Contact
+              Global Offices
             </h4>
             <div className="space-y-4">
               {offices.map((office, index) => (
                 <div key={index} className="text-sm">
                   <p className="font-medium text-accent">{office.location}</p>
                   <p className="text-primary-foreground/80 text-xs">{office.address}</p>
+                  {office.location === "Nepal" && <p className="text-primary-foreground/80 text-xs">{office.phone}</p>}
                 </div>
               ))}
               <Link
@@ -298,7 +299,7 @@ export function EnhancedFooter() {
 
           {/* Copyright and Legal */}
           <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-primary-foreground/20 text-sm text-primary-foreground/60">
-            <p>&copy; 2025 Franklin Education Consultancy. All rights reserved.</p>
+            <p>&copy; 2025 THE OFFICIALS. All rights reserved.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
               <Link href="/privacy" className="hover:text-primary-foreground transition-colors">
                 Privacy Policy
@@ -313,20 +314,6 @@ export function EnhancedFooter() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
-      `}</style>
     </footer>
   )
 }

@@ -17,9 +17,9 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Franklin Education Consultancy - Your Gateway to Global Education",
+  title: "THE OFFICIALS - Premium Student Recruitment & Global Education Partners",
   description:
-    "Leading B2B student recruitment platform connecting universities with trusted agents worldwide. 35+ UK universities, 1500+ global agents.",
+    "Premium B2B student recruitment platform connecting universities with trusted agents worldwide. 35+ UK universities, 1500+ global agents, 3 global offices.",
   generator: "v0.app",
 }
 

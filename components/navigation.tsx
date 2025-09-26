@@ -19,61 +19,50 @@ export function Navigation() {
               <div className="flex items-center space-x-3 hover:scale-105 transition-transform duration-200">
                 <div className="relative">
                   <div className="w-12 h-12 bg-gradient-to-br from-primary via-accent to-primary rounded-xl flex items-center justify-center shadow-lg">
-                    <span className="text-white font-bold text-xl">F</span>
+                    <span className="text-white font-bold text-xl">T</span>
                   </div>
                   <div className="absolute -top-1 -right-1 w-4 h-4 bg-accent rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-xs">E</span>
+                    <span className="text-white font-bold text-xs">O</span>
                   </div>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-primary font-bold text-xl leading-tight">Franklin Education</span>
-                  <span className="text-accent font-semibold text-sm">Consultancy</span>
+                  <span className="text-primary font-bold text-xl leading-tight">THE OFFICIALS</span>
+                  <span className="text-accent font-semibold text-sm">Global Education Partners</span>
                 </div>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-10">
-              <Link
-                href="/"
-                className="text-foreground hover:text-primary transition-colors font-medium relative group"
-              >
+              <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium nav-link">
                 Home
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
               </Link>
-              <Link
-                href="/about"
-                className="text-foreground hover:text-primary transition-colors font-medium relative group"
-              >
+              <Link href="/about" className="text-foreground hover:text-primary transition-colors font-medium nav-link">
                 About Us
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
               </Link>
               <Link
                 href="/partner"
-                className="text-foreground hover:text-primary transition-colors font-medium relative group"
+                className="text-foreground hover:text-primary transition-colors font-medium nav-link"
               >
                 Partner With Us
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
               </Link>
               <Link
                 href="/destinations"
-                className="text-foreground hover:text-primary transition-colors font-medium relative group"
+                className="text-foreground hover:text-primary transition-colors font-medium nav-link"
               >
                 Destinations
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
               </Link>
               <Link
                 href="/contact"
-                className="text-foreground hover:text-primary transition-colors font-medium relative group"
+                className="text-foreground hover:text-primary transition-colors font-medium nav-link"
               >
                 Contact
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
               </Link>
               <Button
                 onClick={() => setShowAppointmentModal(true)}
-                className="bg-gradient-to-r from-accent to-accent/90 hover:from-accent/90 hover:to-accent text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+                className="bg-gradient-to-r from-accent to-accent/90 hover:from-accent/90 hover:to-accent text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 btn-press"
               >
-                Book Appointment
+                Book Consultation
               </Button>
             </div>
 
@@ -109,7 +98,7 @@ export function Navigation() {
                     onClick={() => setShowAppointmentModal(true)}
                     className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
                   >
-                    Book Appointment
+                    Book Consultation
                   </Button>
                 </div>
               </div>
